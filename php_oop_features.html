@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP OOP Features</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PHP Object-Oriented Programming (OOP) Features</h1>
+
+    <h2>1. Classes and Objects</h2>
+    <p>In PHP, a <strong>class</strong> is a blueprint for creating objects. An object is an instance of a class.</p>
+    <pre><code>
+class Car {
+    public $color;
+    public $brand;
+
+    function __construct($color, $brand) {
+        $this->color = $color;
+        $this->brand = $brand;
+    }
+
+    function describe() {
+        return "A $this->color $this->brand car.";
+    }
+}
+
+$myCar = new Car("red", "Toyota");
+echo $myCar->describe();  // Output: A red Toyota car.
+    </code></pre>
+
+    <h2>2. Inheritance</h2>
+    <p>Inheritance allows one class (child) to inherit the properties and methods of another class (parent).</p>
+    <pre><code>
+class Animal {
+    public $name;
+
+    function __construct($name) {
+        $this->name = $name;
+    }
+
+    function speak() {
+        return "Animal sound";
+    }
+}
+
+class Dog extends Animal {
+    function speak() {
+        return "$this->name says Woof!";
+    }
+}
+
+$dog = new Dog("Buddy");
+echo $dog->speak();  // Output: Buddy says Woof!
+    </code></pre>
+
+    <h2>3. Encapsulation</h2>
+    <p>Encapsulation restricts access to certain details of an object and exposes only necessary components.</p>
+    <pre><code>
+class Person {
+    private $name;
+
+    function __construct($name) {
+        $this->name = $name;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+}
+
+$person = new Person("John");
+echo $person->getName();  // Output: John
+    </code></pre>
+
+    <h2>4. Polymorphism</h2>
+    <p>Polymorphism allows different objects to be used interchangeably if they implement the same method signature.</p>
+    <pre><code>
+class Cat extends Animal {
+    function speak() {
+        return "$this->name says Meow!";
+    }
+}
+
+$cat = new Cat("Misty");
+echo $cat->speak();  // Output: Misty says Meow!
+    </code></pre>
+
+    <h2>5. Abstraction</h2>
+    <p>Abstraction defines a structure without implementing specifics. Child classes are expected to implement the details.</p>
+    <pre><code>
+abstract class Shape {
+    abstract public function area();
+}
+
+class Circle extends Shape {
+    public $radius;
+
+    function __construct($radius) {
+        $this->radius = $radius;
+    }
+
+    public function area() {
+        return pi() * $this->radius * $this->radius;
+    }
+}
+
+$circle = new Circle(5);
+echo $circle->area();  // Output: 78.5398
+    </code></pre>
+
+    <p><a href="index.html">Back to Home</a></p>
+
+</body>
+</html>

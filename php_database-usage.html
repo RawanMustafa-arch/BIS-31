@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHP and Database Programming</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+        code, pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>How PHP is Used in Database Programming</h1>
+
+    <p>PHP is one of the most widely used server-side scripting languages for developing web applications, and it plays a crucial role in connecting web pages with databases. One of its main strengths is its ability to interact with databases like MySQL, PostgreSQL, SQLite, and others using built-in functions or libraries.</p>
+
+    <p>With PHP, developers can perform tasks such as:</p>
+    <ul>
+        <li>Connecting to a database</li>
+        <li>Inserting, updating, and deleting records</li>
+        <li>Retrieving data from tables</li>
+        <li>Displaying dynamic content based on database queries</li>
+        <li>Implementing login systems, user profiles, and content management</li>
+    </ul>
+
+    <h2>Example: Connecting to MySQL and Fetching Data</h2>
+
+    <pre><code>
+&lt;?php
+$host = "localhost";
+$username = "root";
+$password = "";
+$dbname = "my_database";
+
+// Create connection
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Select data
+$sql = "SELECT id, name FROM users";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Output each row
+    while($row = $result->fetch_assoc()) {
+        echo "ID: " . $row["id"]. " - Name: " . $row["name"]. "&lt;br&gt;";
+    }
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+?&gt;
+    </code></pre>
+
+    <p>This code connects to a MySQL database, retrieves user data, and displays it on a webpage. This demonstrates how PHP can interact with databases to build dynamic websites and applications.</p>
+
+    <p><a href="index.html">Back to Home</a></p>
+
+</body>
+</html>
